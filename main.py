@@ -14,7 +14,7 @@ def index():
 def hit():
     data = request.get_json()
     global num
-    num = data['Number']
+    num = data['number']
 
     return jsonify({"Message": "Data Recieved", "Data": num})
 
