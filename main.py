@@ -10,7 +10,7 @@ num = int()
 def index():
     return render_template("webpage.html", num=num)
 
-@app.route('/hit', methods=['GET'])
+@app.route('/hit', methods=['POST'])
 def hit():
     data = request.get_json()
     global num
