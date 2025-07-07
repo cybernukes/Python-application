@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flask Dashboard</title>
+</head>
+<body>
+    <h2>Number received from hardware: {{ number }}</h2>
+    <form method="POST" action="/reply">
+        <label>Send reply to hardware:</label><br>
+        <input type="text" name="reply_input" required>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
