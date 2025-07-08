@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 
-app = Flask(name)
+app = Flask(__name__)
 CORS(app)
 num = int()
 
@@ -16,5 +16,5 @@ def hit():
     num = data['Number']
     return jsonify({"Message": "Data Recieved", "Data": num})
 
-if name == "main":
+if __name__ == "__main__":
     app.run(debug=True)
