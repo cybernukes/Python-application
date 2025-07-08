@@ -1,32 +1,33 @@
 from flask import Flask, request, jsonify, render_template
+
 from flask_cors import CORS
 
-app = Flask(__name__)
+app = Flask(name)
+
 CORS(app)
 
-received_number = None
-reply_number = None
+num = int()
 
-@app.route('/post', methods=['POST'])
-def receive_from_hardware():
-    global received_number, reply_number
-    data = request.get_json()
-    received_number = data.get('number')
-    reply_number = None
-    return jsonify({"message": "Number received!"})
+@app.route('/')
 
-@app.route('/dashboard')
-def dashboard():
-    return render_template("dashboard.html", number=received_number)
+def index():
 
-@app.route('/reply', methods=['POST', 'GET'])
-def handle_reply():
-    global reply_number
-    if request.method == 'POST':
-        reply_number = request.form['reply_input']
-        return "Reply received from user"
-    return jsonify({"reply": reply_number})
+return render_template("webpage.html", num=num)
+
+@app.route('/hit', methods=['POST'])
+
+def hit():
+
+data = request.get_json()
+
+global num
+
+num = data['Number']
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
+
+return jsonify({"Message": "Data Recieved", "Data": num})
+
+if name == "main":
+
+app.run(debug=True)
